@@ -1,8 +1,13 @@
+import Head from 'next/head'
+import Nav from '../components/nav'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return <>
-    <h1>LOL</h1>
+    <Head>
+
+    </Head>
+    <Nav />
     <Component {...pageProps} />
   </>
 }

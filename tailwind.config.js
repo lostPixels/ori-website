@@ -5,7 +5,16 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      'primary': "'Bebas Neue', cursive;",
+      'sans': "'Fira Sans', sans-serif;"
+
+    },
+    extend: {
+      colors: {
+        'pop': 'rgba(196, 56, 77, 1)',
+      },
+    },
   },
   plugins: [],
 }

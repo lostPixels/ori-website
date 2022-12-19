@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Nav from '../components/nav';
 
 export default function Home(props) {
     return (
@@ -10,7 +11,9 @@ export default function Home(props) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main className='text-3xl font-bold underline'>
+
+
+            <main className='font-primary text-3xl font-bold'>
                 {props.title}
             </main>
 
