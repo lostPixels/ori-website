@@ -8,7 +8,9 @@ function MyApp({ Component, pageProps }) {
 
     </Head>
     <Nav />
-    <Component {...pageProps} />
+    <main className="grid grid-cols-12 gap-4 max-w-7xl m-auto pt-24">
+      <Component {...pageProps} />
+    </main>
   </>
 }
 

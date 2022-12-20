@@ -10,6 +10,7 @@ export default function Document() {
                 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Sans:wght@400;700&display=swap" rel="stylesheet"></link>
             </Head>
             <body>
+
                 <Main />
                 <NextScript />
             </body>
