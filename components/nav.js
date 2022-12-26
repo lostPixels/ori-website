@@ -24,11 +24,11 @@ const Nav = props => {
                     </Link>
                 </div>
                 <div className='flex md:justify-center flex-grow md:basis-1/3 flex-col pt-12 md:flex-row md:p-0'>
-                    <Link className='md:hidden mx-6 font-primary text-xl block hover:text-pop p-2 md:p-0' href="/">Home</Link>
-                    <Link className='mx-6 font-primary text-xl block hover:text-pop p-2 md:p-0' href="/about">About</Link>
-                    <Link className='mx-6 font-primary text-xl block hover:text-pop p-2 md:p-0' href="/shop">Shop</Link>
-                    <Link className='mx-6 font-primary text-xl block hover:text-pop p-2 md:p-0' href="/press">Press</Link>
-                    <Link className='mx-6 font-primary text-xl block hover:text-pop p-2 md:p-0' href="/contact">contact</Link>
+                    <Link className='md:hidden mx-6 font-primary text-xl block hover:text-pop p-2 md:p-0 text-black' href="/">Home</Link>
+                    <Link className='mx-6 font-primary text-xl block hover:text-pop p-2 md:p-0 text-black' href="/about">About</Link>
+                    <Link className='mx-6 font-primary text-xl block hover:text-pop p-2 md:p-0 text-black' href="/shop">Shop</Link>
+                    <Link className='mx-6 font-primary text-xl block hover:text-pop p-2 md:p-0 text-black' href="/press">Press</Link>
+                    <Link className='mx-6 font-primary text-xl block hover:text-pop p-2 md:p-0 text-black' href="/contact">contact</Link>
                 </div>
                 <div className='flex md:basis-1/6 md:justify-end self-center pb-6 md:pb-0'>
                     <a className='px-2' href="https://opensea.io/collection/ori-by-james-merrill-1" target="_blank" rel="noreferrer">
