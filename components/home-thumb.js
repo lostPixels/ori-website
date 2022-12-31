@@ -12,7 +12,7 @@ const HomeThumb = props => {
     });
 
     return (
-        <div className={`${props.className} border border-slate-100 m-4 transition ease-in-out delay-${props.index * 100} duration-1000 ${cn}`}>
+        <div className={`${props.className} border border-slate-100 m-1 md:m-4 transition ease-in-out delay-${props.index * 100} duration-1000 ${cn}`}>
             <img src={props.attributes.formats.medium.url} width={392} height={522} onLoad={() => setLoaded(true)} />
         </div>
     )

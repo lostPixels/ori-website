@@ -2,11 +2,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import ReactMarkdown from 'react-markdown'
 
-/** Ugly but it works for now. */
-const getURL = (slug) => {
-
-}
-
 const ProductThumbnail = props => {
 
     const d = props.data.attributes;
@@ -22,7 +17,7 @@ const ProductThumbnail = props => {
         setPrice(formatter.format(d.price));
     }, [d.price])
 
-    let destinationURL = d.collection_slug ? `/${collection_slug}` : `/${props.slug}`;
+    let destinationURL = d.collection_slug ? `/${d.collection_slug}` : `/${props.slug}`;
     return (
         <Link href={destinationURL} className="basis-full md:basis-1/2 lg:basis-1/3 p-2 mb-8">
             <figure className="mb-4">

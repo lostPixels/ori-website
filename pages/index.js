@@ -24,7 +24,7 @@ export default function Home(props) {
                 {images.map((img, i) => <HomeThumb key={img.id} {...img} className='flex-1' index={i} />)}
             </div>
 
-            <div className='flex col-start-3 col-span-8'>
+            <div className='col-start-2 col-span-10 md:col-start-3 md:col-span-8'>
                 <p>{props.introduction}</p>
             </div>
 

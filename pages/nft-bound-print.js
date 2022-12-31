@@ -8,23 +8,23 @@ import PriceDifference from '../components/PriceDifference';
 import PlotVariantSample from '../components/PlotVariantSample';
 import Money from '../components/Money';
 
-export default function PlotterDrawing(props) {
+export default function NFTBoundPrint(props) {
 
-    let [selectedImage, setSelectedImage] = useState(props.img.data.attributes.formats.large);
-    let [selectedVariant, setSelectedVariant] = useState(props.variant[0]);
+
     let mintIDRef = useRef();
     let ethAddressRef = useRef();
     let emailRef = useRef();
 
-    const submitPlotRequest = (e) => {
+    const submitRequest = (e) => {
         e.preventDefault();
         const email = emailRef.current.value;
         const mintID = mintIDRef.current.value;
         const ethAddress = ethAddressRef.current.value;
-        const SKU = selectedVariant.sku;
+        const SKU = props.sku;
+        console.log(email, mintID, ethAddress, SKU)
     }
 
-
+    const selectedImage = props.img.data.attributes.formats.large
     return (
         <>
             <Head>
@@ -39,19 +39,12 @@ export default function PlotterDrawing(props) {
 
             <div className='col-start-2 col-span-10 md:col-start-7 md:col-span-4 mb-16 ml-4'>
                 <h1 className='font-primary text-4xl md:text-5xl'>{props.title}</h1>
-                <Money className="block text-pop font-primary text-3xl mb-6" price={selectedVariant.price} />
+                <Money className="block text-pop font-primary text-3xl mb-6" price={props.price} />
                 <div className="mb-6 prose prose-li:mb-0 prose-li:mt-0 prose-p:my-0 prose-ul:my-0">
                     <ReactMarkdown>{props.specs}</ReactMarkdown>
                 </div>
 
-                <form onSubmit={submitPlotRequest}>
-                    <fieldset className='block mb-4'>
-                        <legend className='font-bold'>Style</legend>
-                        {props.variant.map((v, i) =>
-                            <label key={v.sku} className="block">
-                                <input className="" type="radio" name="radio" value={v.sku} defaultChecked={i === 0} onClick={() => setSelectedVariant(props.variant[i])} /> {v.title} <PriceDifference current={selectedVariant.price} new={v.price} />
-                            </label>)}
-                    </fieldset>
+                <form onSubmit={submitRequest}>
                     <label className='block mb-4'><span className='block font-bold'>Your Email</span>
                         <input className='block bg-white border border-slate-400 w-full h-9 p-1' name="email" placeholder='You@aol.com' required ref={emailRef} type="email" />
                     </label>
@@ -70,12 +63,6 @@ export default function PlotterDrawing(props) {
             <div className='prose col-start-2 col-span-10 md:col-start-3 md:col-span-8 mb-16 max-w-full prose-headings:font-primary prose-headings:font-normal prose-headings:md:text-5xl prose-headings:mb-4'>
                 <ReactMarkdown>{props.long_description}</ReactMarkdown>
             </div>
-            <div className='col-start-2 col-span-10 md:col-start-3 md:col-span-8 mb-16 max-w-full'>
-                <h3 className='font-primary text-4xl mb-4'>Choosing a Style</h3>
-                <div className='md:flex'>
-                    {props.variant.map(v => <PlotVariantSample key={v.sku} {...v} />)}
-                </div>
-            </div>
         </>
     )
 }
@@ -83,11 +70,10 @@ export default function PlotterDrawing(props) {
 export async function getStaticProps() {
     // Call an external API endpoint to get posts.
     // You can use any data fetching library
-    const res = await fetch('https://clownfish-app-f4hhn.ondigitalocean.app/api/plotter-drawing?populate=variant.img,img')
+    const res = await fetch('https://clownfish-app-f4hhn.ondigitalocean.app/api/nft-bound-print?populate=*')
     const data = await res.json();
 
     return {
         props: data.data.attributes,
     }
 }
-

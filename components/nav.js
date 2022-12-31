@@ -11,7 +11,7 @@ const Nav = props => {
 
             <div className='flex md:hidden p-4 flex-grow relative'>
                 <Image src='/hamburger.svg' width={20} height={18} alt="Open Mobile Nav" aria-hidden onClick={() => setOpen(!open)} />
-                <Link href="/" className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+                <Link href="/" className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' onClick={() => setOpen(false)}>
                     <img src="https://res.cloudinary.com/dtz3cezyb/image/upload/c_scale,w_80/v1671479069/Ori_Logo_2x_ranayy.png" srcSet='https://res.cloudinary.com/dtz3cezyb/image/upload/c_scale,w_80/v1671479069/Ori_Logo_2x_ranayy.png 1x' width={40} height={22} alt="ORI Project Logo" />
                     <span className='sr-only'>Home</span>
                 </Link>
@@ -24,11 +24,11 @@ const Nav = props => {
                     </Link>
                 </div>
                 <div className='flex md:justify-center flex-grow md:basis-1/3 flex-col pt-12 md:flex-row md:p-0'>
-                    <Link className='md:hidden mx-6 font-primary text-xl block hover:text-pop p-2 md:p-0 text-black' href="/">Home</Link>
-                    <Link className='mx-6 font-primary text-xl block hover:text-pop p-2 md:p-0 text-black' href="/about">About</Link>
-                    <Link className='mx-6 font-primary text-xl block hover:text-pop p-2 md:p-0 text-black' href="/shop">Shop</Link>
-                    <Link className='mx-6 font-primary text-xl block hover:text-pop p-2 md:p-0 text-black' href="/press">Press</Link>
-                    <Link className='mx-6 font-primary text-xl block hover:text-pop p-2 md:p-0 text-black' href="/contact">contact</Link>
+                    <Link className='md:hidden mx-6 font-primary text-xl block hover:text-pop p-2 md:p-0 text-black' href="/" onClick={() => setOpen(false)}>Home</Link>
+                    <Link className='mx-6 font-primary text-xl block hover:text-pop p-2 md:p-0 text-black' href="/about" onClick={() => setOpen(false)}>About</Link>
+                    <Link className='mx-6 font-primary text-xl block hover:text-pop p-2 md:p-0 text-black' href="/shop" onClick={() => setOpen(false)}>Shop</Link>
+                    <Link className='mx-6 font-primary text-xl block hover:text-pop p-2 md:p-0 text-black' href="/press" onClick={() => setOpen(false)}>Press</Link>
+                    <Link className='mx-6 font-primary text-xl block hover:text-pop p-2 md:p-0 text-black' href="/contact" onClick={() => setOpen(false)}>contact</Link>
                 </div>
                 <div className='flex md:basis-1/6 md:justify-end self-center pb-6 md:pb-0'>
                     <a className='px-2' href="https://opensea.io/collection/ori-by-james-merrill-1" target="_blank" rel="noreferrer">

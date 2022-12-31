@@ -12,12 +12,12 @@ export default function Shop(props) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <div className='col-start-3 col-span-8 mb-8'>
+            <div className='col-start-2 col-span-10 md:col-start-3 md:col-span-8 mb-8'>
                 <h1 className='font-primary text-2xl md:text-5xl mb-6'>{props.shop.title}</h1>
                 <p>{props.shop.description}</p>
             </div>
 
-            <div className='flex flex-wrap col-start-3 col-span-8 mb-8'>
+            <div className='flex flex-wrap col-start-2 col-span-10 md:col-start-3 md:col-span-8 mb-8'>
                 {props.productData.map((p, i) => <ProductThumbnail key={i} {...p} />)}
             </div>
         </>

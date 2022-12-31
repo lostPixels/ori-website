@@ -1,11 +1,10 @@
-const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-});
+import Money from "./Money";
+
+
 const PriceDifference = props => {
 
     const delta = props.new - props.current;
-    const price = formatter.format(Math.abs(delta))
+    const price = Math.abs(delta);
 
     if (delta === 0) {
         return null;
@@ -14,7 +13,8 @@ const PriceDifference = props => {
     return (
         <span className="text-slate-700">(
             {delta > 0 ? '+' : '-'}
-            {price})</span>
+            <Money price={price} />
+            )</span>
     )
 }
 
