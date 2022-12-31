@@ -7,6 +7,7 @@ import ReactMarkdown from 'react-markdown'
 import PriceDifference from '../components/PriceDifference';
 import PlotVariantSample from '../components/PlotVariantSample';
 import Money from '../components/Money';
+import Breadcrumb from '../components/Breadcrumb';
 
 export default function PlotterDrawing(props) {
 
@@ -32,6 +33,8 @@ export default function PlotterDrawing(props) {
                 <meta name="description" content={props.long_description} />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+
+            <Breadcrumb crumbs={[{ title: 'SHOP', url: '/shop' }]} />
 
             <div className='col-start-2 col-span-10 md:col-start-3 md:col-span-4 mb-8'>
                 <img className="border border-slate-100" src={selectedImage.url} width={selectedImage.width} height={selectedImage.height} />

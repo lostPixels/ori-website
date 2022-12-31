@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import Breadcrumb from "../../components/Breadcrumb";
 import Money from "../../components/Money";
 import StripePrice from "../../components/StripePrice";
 
@@ -17,6 +18,8 @@ export default function OpenEditionPrint(props) {
                 <meta name="description" content={props.long_description} />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+
+            <Breadcrumb crumbs={[{ title: 'SHOP', url: '/shop' }, { title: 'Open Edition Prints', url: '/open-edition-prints' }]} />
 
             <div className='col-start-2 col-span-10 md:col-start-3 md:col-span-4 mb-8'>
                 <img className="border border-slate-100" src={selectedImage.url} width={selectedImage.width} height={selectedImage.height} />
