@@ -8,6 +8,7 @@ import PriceDifference from '../components/PriceDifference';
 import PlotVariantSample from '../components/PlotVariantSample';
 import Money from '../components/Money';
 import Breadcrumb from '../components/Breadcrumb';
+import RequestSuccessMessage from '../components/RequestSuccessMessage';
 
 export default function PlotterDrawing(props) {
 
@@ -16,15 +17,35 @@ export default function PlotterDrawing(props) {
     let mintIDRef = useRef();
     let ethAddressRef = useRef();
     let emailRef = useRef();
+    let [status, setStatus] = useState('idle');
 
-    const submitPlotRequest = (e) => {
+    // const submitPlotRequest = (e) => {
+    //     e.preventDefault();
+    //     const email = emailRef.current.value;
+    //     const mintID = mintIDRef.current.value;
+    //     const ethAddress = ethAddressRef.current.value;
+    //     const SKU = selectedVariant.sku;
+
+
+    // }
+    const submitRequest = async (e) => {
         e.preventDefault();
-        const email = emailRef.current.value;
-        const mintID = mintIDRef.current.value;
-        const ethAddress = ethAddressRef.current.value;
-        const SKU = selectedVariant.sku;
+        setStatus('loading');
+        const user_email = emailRef.current.value;
+        const mint_id = mintIDRef.current.value;
+        const eth_address = ethAddressRef.current.value;
+        const product = 'plot_' + selectedVariant.sku;
+        const body = { user_email, mint_id, eth_address, product }
+        const response = await fetch('/api/placeUnverifiedOrder',
+            {
+                method: 'post',
+                body: JSON.stringify(body),
+                headers: { 'Content-Type': 'application/json' }
+            });
+        const data = await response.json();
+        console.log('request complete', data);
+        setStatus('success');
     }
-
 
     return (
         <>
@@ -47,27 +68,32 @@ export default function PlotterDrawing(props) {
                     <ReactMarkdown>{props.specs}</ReactMarkdown>
                 </div>
 
-                <form onSubmit={submitPlotRequest}>
-                    <fieldset className='block mb-4'>
-                        <legend className='font-bold'>Style</legend>
-                        {props.variant.map((v, i) =>
-                            <label key={v.sku} className="block">
-                                <input className="" type="radio" name="radio" value={v.sku} defaultChecked={i === 0} onClick={() => setSelectedVariant(props.variant[i])} /> {v.title} <PriceDifference current={selectedVariant.price} new={v.price} />
-                            </label>)}
-                    </fieldset>
-                    <label className='block mb-4'><span className='block font-bold'>Your Email</span>
-                        <input className='block bg-white border border-slate-400 w-full h-9 p-1' name="email" placeholder='You@aol.com' required ref={emailRef} type="email" />
-                    </label>
-                    <label className='block mb-4'><span className='block font-bold'>Mint Number</span>
-                        <input className='block bg-white border border-slate-400 w-full h-9 p-1' name="mint_number" placeholder='100' required ref={mintIDRef} />
-                    </label>
-                    <label className='block mb-4'><span className='block font-bold'>Owner Ethereum Address</span>
-                        <input className='block bg-white border border-slate-400 w-full h-9 p-1' name="mint_number" placeholder='0xC3B212da1F50DE8eCAE59C932e36DF7aFb6319cW' required ref={ethAddressRef} />
-                    </label>
+                {status === 'success' &&
+                    <RequestSuccessMessage />
+                }
+                {status === 'idle' &&
+                    <form onSubmit={submitRequest} className={status === 'loading' ? 'opacity-40 pointer-events-none' : ''}>
+                        <fieldset className='block mb-4'>
+                            <legend className='font-bold'>Style</legend>
+                            {props.variant.map((v, i) =>
+                                <label key={v.sku} className="block">
+                                    <input className="" type="radio" name="radio" value={v.sku} defaultChecked={i === 0} onClick={() => setSelectedVariant(props.variant[i])} /> {v.title} <PriceDifference current={selectedVariant.price} new={v.price} />
+                                </label>)}
+                        </fieldset>
+                        <label className='block mb-4'><span className='block font-bold'>Your Email</span>
+                            <input className='block bg-white border border-slate-400 w-full h-9 p-1' name="email" placeholder='You@aol.com' required ref={emailRef} type="email" />
+                        </label>
+                        <label className='block mb-4'><span className='block font-bold'>Mint Number</span>
+                            <input className='block bg-white border border-slate-400 w-full h-9 p-1' name="mint_number" placeholder='100' required ref={mintIDRef} />
+                        </label>
+                        <label className='block mb-4'><span className='block font-bold'>Owner Ethereum Address</span>
+                            <input className='block bg-white border border-slate-400 w-full h-9 p-1' name="mint_number" placeholder='0xC3B212da1F50DE8eCAE59C932e36DF7aFb6319cW' required ref={ethAddressRef} />
+                        </label>
 
-                    <button className='block bg-cool transition-all hover:bg-cool-pop text-white w-full h-11 font-bold tracking-wide'>REQUEST</button>
+                        <button className='block bg-cool transition-all hover:bg-cool-pop text-white w-full h-11 font-bold tracking-wide'>REQUEST</button>
 
-                </form>
+                    </form>
+                }
             </div>
 
             <div className='prose col-start-2 col-span-10 md:col-start-3 md:col-span-8 mb-16 max-w-full prose-headings:font-primary prose-headings:font-normal prose-headings:md:text-5xl prose-headings:mb-4'>
