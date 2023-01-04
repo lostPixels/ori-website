@@ -8,9 +8,6 @@ export default function OpenEditionPrint(props) {
 
     const selectedImage = props.hero_image.data.attributes.formats.large
 
-    const submitRequest = () => {
-
-    }
     return (
         <>
             <Head>

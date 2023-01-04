@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import ReactMarkdown from 'react-markdown'
+import StripePrice from '../components/StripePrice';
 
 const ProductThumbnail = props => {
 
     const d = props.data.attributes;
-
-
     let [price, setPrice] = useState(0);
 
     useEffect(() => {
@@ -14,8 +13,8 @@ const ProductThumbnail = props => {
             style: 'currency',
             currency: 'USD',
         });
-        setPrice(formatter.format(d.price));
-    }, [d.price])
+        setPrice(formatter.format(d.summary_price));
+    }, [d.summary_price]);
 
     let destinationURL = d.collection_slug ? `/${d.collection_slug}` : `/${props.slug}`;
     return (
@@ -25,7 +24,10 @@ const ProductThumbnail = props => {
             </figure>
             <figcaption>
                 <h3 className="font-primary text-2xl">{d.title}</h3>
-                <p className="font-primary text-pop mb-4">{price} {props.slug === 'plotter-drawing' || props.slug === 'rough-cut-drawings-master' ? '++' : ''}</p>
+
+                {d.stripe_product_id && <StripePrice className="font-primary text-pop mb-4" id={d.stripe_product_id} />}
+                {d.summary_price && <span className="font-primary text-pop mb-4">Starting at {price}</span>}
+
                 <div className="mb-6 prose prose-li:mb-0 prose-li:mt-0 prose-p:my-0 prose-ul:my-0">
                     <ReactMarkdown>{d.short_description}</ReactMarkdown>
                 </div>

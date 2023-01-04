@@ -7,7 +7,7 @@ export default async function handler(req, res) {
 
     const { pid } = req.query;
 
-    if (!pid || pid.length) {
+    if (!pid || !pid.length) {
         res.status(404);
     }
 

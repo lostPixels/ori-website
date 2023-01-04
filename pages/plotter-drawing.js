@@ -9,6 +9,7 @@ import PlotVariantSample from '../components/PlotVariantSample';
 import Money from '../components/Money';
 import Breadcrumb from '../components/Breadcrumb';
 import RequestSuccessMessage from '../components/RequestSuccessMessage';
+import StripePrice from '../components/StripePrice';
 
 export default function PlotterDrawing(props) {
 
@@ -63,7 +64,7 @@ export default function PlotterDrawing(props) {
 
             <div className='col-start-2 col-span-10 md:col-start-7 md:col-span-4 mb-16 ml-4'>
                 <h1 className='font-primary text-4xl md:text-5xl'>{props.title}</h1>
-                <Money className="block text-pop font-primary text-3xl mb-6" price={selectedVariant.price} />
+                <StripePrice className="block text-pop font-primary text-3xl mb-6" id={selectedVariant.stripe_product_id} />
                 <div className="mb-6 prose prose-li:mb-0 prose-li:mt-0 prose-p:my-0 prose-ul:my-0">
                     <ReactMarkdown>{props.specs}</ReactMarkdown>
                 </div>
@@ -77,7 +78,7 @@ export default function PlotterDrawing(props) {
                             <legend className='font-bold'>Style</legend>
                             {props.variant.map((v, i) =>
                                 <label key={v.sku} className="block">
-                                    <input className="" type="radio" name="radio" value={v.sku} defaultChecked={i === 0} onClick={() => setSelectedVariant(props.variant[i])} /> {v.title} <PriceDifference current={selectedVariant.price} new={v.price} />
+                                    <input className="" type="radio" name="radio" value={v.sku} defaultChecked={i === 0} onClick={() => setSelectedVariant(props.variant[i])} /> {v.title} <PriceDifference current={selectedVariant.stripe_product_id} new={v.stripe_product_id} />
                                 </label>)}
                         </fieldset>
                         <label className='block mb-4'><span className='block font-bold'>Your Email</span>
