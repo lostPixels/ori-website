@@ -71,11 +71,6 @@ export default function About(props) {
             sample: 'palette-skull_2x_aalb8h'
         },
         {
-            title: 'exodus',
-            palette: 'exodus_2x_zbpzfk',
-            sample: 'palette-exodus_2x_ay7rco'
-        },
-        {
             title: 'zest',
             palette: 'zest_2x_cknvuk',
             sample: 'palette-zest_2x_paso0s'
@@ -86,13 +81,35 @@ export default function About(props) {
             sample: 'montana-mint_2x_cmvi0n'
         }
     ]
+
+    const progression_l = [];
+    const progression_r = [];
+    for (let i = 0; i <= 50; i++) {
+        let f = (i).toString().padStart(2, '0');
+        if (i % 1 === 0) {
+            progression_l.push(f)
+        }
+        else {
+            progression_r.push(f)
+        }
+    }
+
     return (<>
 
         <Head>
             <title>About / Lostpixels</title>
             {/* <meta name="description" content={ } /> */}
             <link rel="icon" href="/favicon.ico" />
+            <script src="https://player.vimeo.com/api/player.js" defer />
         </Head>
+
+
+        <div style={{ padding: '56.25% 0 0 0', 'position': 'relative' }}><iframe
+            src="https://player.vimeo.com/video/769447858?h=c3491e2713&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen
+            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} title="ORI - Promo clip [wip]"></iframe>
+        </div>
+
 
         <div className='col-start-2 col-span-10 md:col-start-3 md:col-span-8'>
 
@@ -137,7 +154,7 @@ export default function About(props) {
                     </div>
                 </div>
 
-                <p className="mb-8">In my hometown of Baltimore City, graffiti was all around me, almost like static noise during my
+                <p className="mb-24">In my hometown of Baltimore City, graffiti was all around me, almost like static noise during my
                     everyday life. I
                     developed a profound respect for it as an art form because of its colorful flowing nature and combination of
                     specific
@@ -148,11 +165,11 @@ export default function About(props) {
 
             </section>
 
-            <section className="max-w-4xl mx-auto bottom-divider  px-6">
+            <section className="max-w-4xl mx-auto bottom-divider px-6 mb-24">
                 <figure className="flex flex-col sm:flex-row-reverse">
 
                     <div className="flex-auto w-full sm:w-2/4 mb-12 sm:mb-0 sm:mr-8">
-                        <video autoplay="true" loop="true" muted>
+                        <video autoPlay="true" loop="true" muted>
                             <source src="https://res.cloudinary.com/dtz3cezyb/video/upload/v1673024972/about_section/bending_knif8f.mp4" type="video/mp4" />
                         </video>
                     </div>
@@ -177,11 +194,11 @@ export default function About(props) {
                 </figure>
             </section>
 
-            <section className="max-w-4xl mx-auto bottom-divider  px-6">
+            <section className="max-w-4xl mx-auto bottom-divider  px-6 mb-24">
                 <figure className="flex flex-row-reverse flex-col sm:flex-row">
 
                     <div className="flex-auto w-full sm:w-2/4 mb-12 sm:mb-0 sm:mr-8">
-                        <video autoplay loop="true" muted>
+                        <video autoPlay loop="true" muted>
                             <source src="https://res.cloudinary.com/dtz3cezyb/video/upload/v1673024892/about_section/painting_e8mzga.mp4" type="video/mp4" />
                         </video>
                     </div>
@@ -588,117 +605,30 @@ export default function About(props) {
                                 <em>What follows is a glimpse of the snapshots along the way.</em>
                             </p>
                         </div>
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/51.jpg"
-                            srcset="progression/optimized/51.jpg 1x, progression/optimized/51@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/01.jpg"
-                            srcset="progression/optimized/01.jpg 1x, progression/optimized/01@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/03.jpg"
-                            srcset="progression/optimized/03.jpg 1x, progression/optimized/03@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/05.jpg"
-                            srcset="progression/optimized/05.jpg 1x, progression/optimized/05@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/07.jpg"
-                            srcset="progression/optimized/07.jpg 1x, progression/optimized/07@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/09.jpg"
-                            srcset="progression/optimized/09.jpg 1x, progression/optimized/09@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/11.jpg"
-                            srcset="progression/optimized/11.jpg 1x, progression/optimized/11@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/13.jpg"
-                            srcset="progression/optimized/13.jpg 1x, progression/optimized/13@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/15.jpg"
-                            srcset="progression/optimized/15.jpg 1x, progression/optimized/15@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/17.jpg"
-                            srcset="progression/optimized/17.jpg 1x, progression/optimized/17@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/19.jpg"
-                            srcset="progression/optimized/19.jpg 1x, progression/optimized/19@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/21.jpg"
-                            srcset="progression/optimized/21.jpg 1x, progression/optimized/21@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/23.jpg"
-                            srcset="progression/optimized/23.jpg 1x, progression/optimized/23@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/25.jpg"
-                            srcset="progression/optimized/25.jpg 1x, progression/optimized/25@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/27.jpg"
-                            srcset="progression/optimized/27.jpg 1x, progression/optimized/27@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/29.jpg"
-                            srcset="progression/optimized/29.jpg 1x, progression/optimized/29@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/31.jpg"
-                            srcset="progression/optimized/31.jpg 1x, progression/optimized/31@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/33.jpg"
-                            srcset="progression/optimized/33.jpg 1x, progression/optimized/33@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/35.jpg"
-                            srcset="progression/optimized/35.jpg 1x, progression/optimized/35@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/37.jpg"
-                            srcset="progression/optimized/37.jpg 1x, progression/optimized/37@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/39.jpg"
-                            srcset="progression/optimized/39.jpg 1x, progression/optimized/39@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/41.jpg"
-                            srcset="progression/optimized/41.jpg 1x, progression/optimized/41@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/43.jpg"
-                            srcset="progression/optimized/43.jpg 1x, progression/optimized/43@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/45.jpg"
-                            srcset="progression/optimized/45.jpg 1x, progression/optimized/45@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/47.jpg"
-                            srcset="progression/optimized/47.jpg 1x, progression/optimized/47@2x.jpg 2x" />
 
-
+                        {progression_l.map(i => <CldImage
+                            key={i}
+                            className="mb-4 mx-auto"
+                            width="460"
+                            height="691"
+                            crop='fill'
+                            src={`about_section/progression/${i}`}
+                            alt=""
+                        />)
+                        }
                     </div>
 
                     <div className="col-span-1">
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/50.jpg"
-                            srcset="progression/optimized/50.jpg 1x, progression/optimized/02@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/02.jpg"
-                            srcset="progression/optimized/02.jpg 1x, progression/optimized/02@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/04.jpg"
-                            srcset="progression/optimized/04.jpg 1x, progression/optimized/04@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/06.jpg"
-                            srcset="progression/optimized/06.jpg 1x, progression/optimized/06@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/08.jpg"
-                            srcset="progression/optimized/08.jpg 1x, progression/optimized/08@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/10.jpg"
-                            srcset="progression/optimized/10.jpg 1x, progression/optimized/10@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/12.jpg"
-                            srcset="progression/optimized/12.jpg 1x, progression/optimized/12@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/14.jpg"
-                            srcset="progression/optimized/14.jpg 1x, progression/optimized/14@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/16.jpg"
-                            srcset="progression/optimized/16.jpg 1x, progression/optimized/16@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/18.jpg"
-                            srcset="progression/optimized/18.jpg 1x, progression/optimized/18@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/20.jpg"
-                            srcset="progression/optimized/20.jpg 1x, progression/optimized/20@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/22.jpg"
-                            srcset="progression/optimized/22.jpg 1x, progression/optimized/22@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/24.jpg"
-                            srcset="progression/optimized/24.jpg 1x, progression/optimized/24@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/26.jpg"
-                            srcset="progression/optimized/26.jpg 1x, progression/optimized/26@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/28.jpg"
-                            srcset="progression/optimized/28.jpg 1x, progression/optimized/28@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/30.jpg"
-                            srcset="progression/optimized/30.jpg 1x, progression/optimized/30@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/32.jpg"
-                            srcset="progression/optimized/32.jpg 1x, progression/optimized/32@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/34.jpg"
-                            srcset="progression/optimized/34.jpg 1x, progression/optimized/34@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/36.jpg"
-                            srcset="progression/optimized/36.jpg 1x, progression/optimized/36@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/38.jpg"
-                            srcset="progression/optimized/38.jpg 1x, progression/optimized/38@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/40.jpg"
-                            srcset="progression/optimized/40.jpg 1x, progression/optimized/40@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/42.jpg"
-                            srcset="progression/optimized/42.jpg 1x, progression/optimized/42@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/44.jpg"
-                            srcset="progression/optimized/44.jpg 1x, progression/optimized/44@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/46.jpg"
-                            srcset="progression/optimized/46.jpg 1x, progression/optimized/46@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/48.jpg"
-                            srcset="progression/optimized/48.jpg 1x, progression/optimized/48@2x.jpg 2x" />
-                        <img className="mb-4 mx-auto" loading="lazy" src="progression/optimized/49.jpg"
-                            srcset="progression/optimized/49.jpg 1x, progression/optimized/49@2x.jpg 2x" />
-
-
-
-
+                        {progression_r.map(i => <CldImage
+                            key={i}
+                            className="mb-4 mx-auto"
+                            width="460"
+                            height="691"
+                            crop='fill'
+                            src={`about_section/progression/${i}`}
+                            alt=""
+                        />)
+                        }
 
                     </div>
 
