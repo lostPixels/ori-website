@@ -83,16 +83,17 @@ export default function About(props) {
     ]
 
     const progression_l = [];
-    const progression_r = [];
-    for (let i = 0; i <= 50; i++) {
+    const progression_r = [50];
+    for (let i = 1; i <= 49; i++) {
         let f = (i).toString().padStart(2, '0');
-        if (i % 1 === 0) {
+        if (i % 2 === 0) {
             progression_l.push(f)
         }
         else {
             progression_r.push(f)
         }
     }
+
 
     return (<>
 
@@ -104,14 +105,18 @@ export default function About(props) {
         </Head>
 
 
-        <div style={{ padding: '56.25% 0 0 0', 'position': 'relative' }}><iframe
-            src="https://player.vimeo.com/video/769447858?h=c3491e2713&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-            frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen
-            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} title="ORI - Promo clip [wip]"></iframe>
-        </div>
+
 
 
         <div className='col-start-2 col-span-10 md:col-start-3 md:col-span-8'>
+
+            <section className="mb-24">
+                <div style={{ padding: '56.25% 0 0 0', 'position': 'relative' }}><iframe
+                    src="https://player.vimeo.com/video/769447858?h=c3491e2713&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                    frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen
+                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} title="ORI - Promo clip [wip]"></iframe>
+                </div>
+            </section>
 
             <section className="max-w-4xl mx-auto bottom-divider px-6">
 
@@ -170,7 +175,7 @@ export default function About(props) {
 
                     <div className="flex-auto w-full sm:w-2/4 mb-12 sm:mb-0 sm:mr-8">
                         <video autoPlay="true" loop="true" muted>
-                            <source src="https://res.cloudinary.com/dtz3cezyb/video/upload/v1673024972/about_section/bending_knif8f.mp4" type="video/mp4" />
+                            <source src="https://res.cloudinary.com/dtz3cezyb/video/upload/v1673024972/about_section/bending_knif8f.mp4" type="video/mp4" >
                         </video>
                     </div>
 
@@ -594,7 +599,7 @@ export default function About(props) {
 
             </section>
 
-            <section className="max-w-4xl mx-auto bottom-divider px-6">
+            <section className="max-w-4xl mx-auto bottom-divider px-6 mb-24">
                 <div className="grid grid-cols-2 gap-4">
                     <div className="col-span-1">
                         <div>
@@ -636,7 +641,7 @@ export default function About(props) {
             </section>
 
 
-            <section className="max-w-4xl mx-auto bottom-divider">
+            <section className="max-w-4xl mx-auto bottom-divider mb-24">
                 <h2 className="font-bold font-primary text-3xl text-center">Shouts</h2>
                 <div className="font-bold font-primary text-1xl mb-4 text-center">(in no particular order)</div>
                 <ul className="flex flex-wrap text-center">
