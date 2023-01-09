@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities*/
+
 import Head from "next/head";
 import { CldImage } from 'next-cloudinary';
 
@@ -279,7 +281,7 @@ export default function About(props) {
 
 
                 <a href="https://meisphotography.com/" className="inline-block font-primary bg-white px-2 rounded-xl mb-6"
-                    target="_blank">Photo by MATT MEISENHEIMER</a>
+                    target="_blank" rel="noreferrer">Photo by MATT MEISENHEIMER</a>
 
                 <p className="mb-24">Color palettes are curated based on a handful of underlying themes, including street art,
                     digital art, and organic landscapes. I wanted palettes like Zest to feel digital while natural compositions
