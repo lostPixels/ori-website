@@ -11,6 +11,7 @@ import Breadcrumb from '../components/Breadcrumb';
 import RequestSuccessMessage from '../components/RequestSuccessMessage';
 import Link from 'next/link';
 import StripePrice from '../components/StripePrice';
+import { CldImage } from 'next-cloudinary';
 
 export default function NFTBoundPrint(props) {
 
@@ -105,8 +106,65 @@ export default function NFTBoundPrint(props) {
                 }
             </div>
 
-            <div className='prose col-start-2 col-span-10 md:col-start-3 md:col-span-8 mb-16 max-w-full prose-headings:font-primary prose-headings:font-normal prose-headings:md:text-5xl prose-headings:mb-4'>
+            <div className='prose col-start-2 col-span-10 md:col-start-3 md:col-span-8 mb-8 max-w-full prose-headings:font-primary prose-headings:font-normal prose-headings:md:text-3xl prose-headings:mb-4'>
                 <ReactMarkdown>{props.long_description}</ReactMarkdown>
+            </div>
+
+            <div className='col-start-2 col-span-10 md:col-start-3 md:col-span-8 mb-16 max-w-full'>
+
+                <div className='flex'>
+                    <div class="basis-1/2 p-4">
+                        <span className='font-primary'>Web Version</span>
+                        <CldImage
+                            className="m-0 border border-slate-300"
+                            width="460"
+                            height="601"
+                            crop='fill'
+                            src='print-unenhanced-full_uyokeo'
+
+                            alt=""
+                        />
+                    </div>
+                    <div class="basis-1/2  p-4">
+                        <span className='font-primary'>Enhanced Version</span>
+                        <CldImage
+                            className="m-0 border border-slate-300"
+                            width="460"
+                            height="601"
+                            crop='fill'
+                            src='print-enhanced-full_qgqchi'
+
+                            alt=""
+                        />
+                    </div>
+                </div>
+                <div className='flex'>
+                    <div class="basis-1/2  p-4">
+                        <span className='font-primary'>Web Version</span>
+                        <CldImage
+                            className="m-0 border border-slate-300"
+                            width="460"
+                            height="601"
+                            crop='fill'
+                            src='print-unenhanced-detail_o0qfla'
+                            alt=""
+                        />
+                    </div>
+                    <div class="basis-1/2  p-4">
+                        <span className='font-primary'>Enhanced Version</span>
+                        <CldImage
+                            className="m-0 border border-slate-300"
+                            width="460"
+                            height="601"
+                            crop='fill'
+                            src='print-enhanced-detail_d9jdnn'
+
+                            alt=""
+                        />
+                    </div>
+                </div>
+
+
             </div>
         </>
     )
