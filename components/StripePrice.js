@@ -8,13 +8,16 @@ const formatter = new Intl.NumberFormat('en-US', {
     currency: 'USD',
 });
 
-
 export default function StripePrice(props) {
 
     const { data, error } = useSWR(`/api/getPrice?pid=${props.id}`, fetcher)
-    if (error || !data) return <span className={props.className}>-</span>
+    if (error || !data) return props.plain ? <> - </> : <span className={props.className}>-</span>
 
     let total = formatter.format(data.unit_amount / 100);
+
+    if (props.plain) {
+        return <>{total}</>;
+    }
 
     return (
         <span className={props.className}>{total}</span>

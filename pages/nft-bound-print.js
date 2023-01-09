@@ -10,6 +10,7 @@ import Money from '../components/Money';
 import Breadcrumb from '../components/Breadcrumb';
 import RequestSuccessMessage from '../components/RequestSuccessMessage';
 import Link from 'next/link';
+import StripePrice from '../components/StripePrice';
 
 export default function NFTBoundPrint(props) {
 
@@ -17,7 +18,11 @@ export default function NFTBoundPrint(props) {
     let mintIDRef = useRef();
     let ethAddressRef = useRef();
     let emailRef = useRef();
+    let variantRef = useRef();
     let [status, setStatus] = useState('idle');
+
+
+    let [selectedVariant, setSelectedVariant] = useState(props.variant[0]);
 
     const submitRequest = async (e) => {
         e.preventDefault();
@@ -25,8 +30,9 @@ export default function NFTBoundPrint(props) {
         const user_email = emailRef.current.value;
         const mint_id = mintIDRef.current.value;
         const eth_address = ethAddressRef.current.value;
-        const product = 'nft_bound_print';
-        const body = { user_email, mint_id, eth_address, product }
+        const variant = variantRef.current.value;
+        const product = 'nft_bound_print_' + selectedVariant.sku;
+        const body = { user_email, mint_id, eth_address, product, variant }
         const response = await fetch('/api/placeUnverifiedOrder',
             {
                 method: 'post',
@@ -39,6 +45,16 @@ export default function NFTBoundPrint(props) {
     }
 
     const selectedImage = props.img.data.attributes.formats.large
+
+
+    const handleVariantChange = () => {
+        console.log(variantRef.current.value)
+        let variant = props.variant.find(v => v.sku === variantRef.current.value);
+        if (variant) {
+            setSelectedVariant(variant);
+        }
+    }
+
     return (
         <>
             <Head>
@@ -55,7 +71,8 @@ export default function NFTBoundPrint(props) {
 
             <div className='col-start-2 col-span-10 md:col-start-7 md:col-span-4 mb-16 ml-4'>
                 <h1 className='font-primary text-4xl md:text-5xl'>{props.title}</h1>
-                <Money className="block text-pop font-primary text-3xl mb-6" price={props.price} />
+
+                <StripePrice className="block text-pop font-primary text-3xl mb-6" id={selectedVariant.stripe_product_id} />
                 <div className="mb-6 prose prose-li:mb-0 prose-li:mt-0 prose-p:my-0 prose-ul:my-0">
                     <ReactMarkdown>{props.specs}</ReactMarkdown>
                 </div>
@@ -74,6 +91,12 @@ export default function NFTBoundPrint(props) {
                         </label>
                         <label className='block mb-4'><span className='block font-bold'>Owner Ethereum Address</span>
                             <input className='block bg-white border border-slate-400 w-full h-9 p-1' name="mint_number" placeholder='0xC3B212da1F50DE8eCAE59C932e36DF7aFb6319cW' required ref={ethAddressRef} />
+                        </label>
+
+                        <label className='block mb-4'><span className='block font-bold'>Size</span>
+                            <select onChange={handleVariantChange} className='block bg-white border border-slate-400 w-full h-9 p-1' name="size" ref={variantRef}>
+                                {props.variant.map(v => (<option key={v.id} value={v.sku}>{v.title} - <StripePrice id={v.stripe_product_id} plain={true} /></option>))}
+                            </select>
                         </label>
 
                         <button className='block bg-cool transition-all hover:bg-cool-pop text-white w-full h-11 font-bold tracking-wide'>REQUEST</button>
