@@ -175,7 +175,7 @@ export default function About(props) {
 
                     <div className="flex-auto w-full sm:w-2/4 mb-12 sm:mb-0 sm:mr-8">
                         <video autoPlay="true" loop="true" muted>
-                            <source src="https://res.cloudinary.com/dtz3cezyb/video/upload/v1673024972/about_section/bending_knif8f.mp4" type="video/mp4" >
+                            <source src="https://res.cloudinary.com/dtz3cezyb/video/upload/v1673024972/about_section/bending_knif8f.mp4" type="video/mp4" />
                         </video>
                     </div>
 
